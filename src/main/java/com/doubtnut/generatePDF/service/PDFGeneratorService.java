@@ -42,13 +42,13 @@ public class PDFGeneratorService {
 
 	}
 
-	public void writeIntoPDF(QuestionsEntity json, String username, String password) {
+	public void writeIntoPDF(QuestionsEntity json, String username, String password,String filepath) {
 
 		StringBuilder questions = new StringBuilder("");
 		for (int i = 0; i < json.getQuestions().size(); i++) {
 			questions = questions.append(json.getQuestions().get(i)).append("\n");
 		}
-		StringBuilder dest = new StringBuilder("/Users/shubham/Desktop/RelatedQuestions.pdf");
+		StringBuilder dest = new StringBuilder(filepath);
 		PdfDocument pdf = null;
 		try {
 			pdf = new PdfDocument(new PdfWriter(dest.toString()));
