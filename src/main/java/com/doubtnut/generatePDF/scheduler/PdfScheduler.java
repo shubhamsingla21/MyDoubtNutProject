@@ -23,6 +23,9 @@ public class PdfScheduler {
 	@Value("${app.password}")
 	 private String password;
 	
+	@Value("${app.filePath}")
+	 private String filePath;
+	
 	@Scheduled(fixedRate = 5000)
 	public void checkMapForExpiry() {
 		
@@ -31,7 +34,7 @@ public class PdfScheduler {
 		if(LocalDateTime.now().minusMinutes(5).compareTo(entry.getValue().getTimeAtCreation())>=0)
 		{
 			//System.out.println("line 33"+" "+username+" "+password);
-			pdfGeneratorService.writeIntoPDF(entry.getValue(),username,password);
+			pdfGeneratorService.writeIntoPDF(entry.getValue(),username,password,filePath);
 			PDFGeneratorService.map.remove(entry.getKey());
 		}
 	}
