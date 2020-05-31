@@ -48,7 +48,7 @@ public class PDFGeneratorService {
 		for (int i = 0; i < json.getQuestions().size(); i++) {
 			questions = questions.append(json.getQuestions().get(i)).append("\n");
 		}
-		StringBuilder dest = new StringBuilder("/Users/shubham/Desktop/" + json.getPath());
+		StringBuilder dest = new StringBuilder("/Users/shubham/Desktop/RelatedQuestions.pdf");
 		PdfDocument pdf = null;
 		try {
 			pdf = new PdfDocument(new PdfWriter(dest.toString()));
@@ -68,7 +68,7 @@ public class PDFGeneratorService {
 
 	public void sendToGMail(StringBuilder dest, String mailId, String username, String password) {
 
-		String from = "shubhamsingla1421@gmail.com";
+		String from = username;
 
 		String host = "smtp.gmail.com";
 
